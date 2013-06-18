@@ -33,6 +33,7 @@ For now, you can do the following:
 * Inside of that folder, create a `web/` and a `repositories/` folder
 * Create a `medusa.json` file that looks like this:
 
+```
     {
         "require": [
             "vendor/package",
@@ -43,9 +44,10 @@ For now, you can do the following:
         "repodir":"repositories",
         "satisconfig":"satis.json"
     }
-
+```
 * Create a satis config file skeleton like this:
 
+```
     {
         "name": "My Repository",
         "homepage": "http://packages.example.org",
@@ -53,20 +55,21 @@ For now, you can do the following:
         ],
         "require-all": true // if you want to also mirror the dependencies from each package
     }
-
-* run `./medusa.phar medusa.json`
+```
+* run `./medusa.phar mirror medusa.json`
 * wait a long time
 
-During this time, medusa will first find all the dependencies you need. Then run
-`git clone --mirror` for each of them to create a mirror inside of the specified
-repodir. And finally update your satis.json file with your new config.
+During this time, medusa will first find all the dependencies you need. Then it
+runs `git clone --mirror` for each of them to create a mirror inside of the
+specified repodir. Finally, it updates your satis.json file with your new config.
 
 * Run the satis build command: `./satis.phar build satis.json web/`
 * Once a day run:
 
+```
     ./medusa.phar update repos
     ./satis.phar build satis.json web/
-
+```
 To update all repos and rebuild the satis config.
 
 # Other available commands:
@@ -85,8 +88,10 @@ Point a webserver to the `web/` directory.
 
 In your composer global config file add:
 
+```
     {
         "repositories": [
             { "type": "composer", "url": "http://localsatis.url"}
         ]
     }
+```
