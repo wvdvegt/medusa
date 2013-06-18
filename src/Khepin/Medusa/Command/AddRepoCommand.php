@@ -52,7 +52,7 @@ EOT
 
         $this->output = $output;
 
-        $deps = [$package];
+        $deps = array($package);
         if($input->getOption('with-deps')){
             $resolver = new DependencyResolver($package);
             $deps = $resolver->resolve();

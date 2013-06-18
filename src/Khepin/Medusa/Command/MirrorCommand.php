@@ -35,7 +35,7 @@ class MirrorCommand extends Command
         $output->writeln('<info>First getting all dependencies</info>');
         $this->guzzle = new Client('http://packagist.org');
         $config = json_decode(file_get_contents($input->getArgument('config')));
-        $repos = [];
+        $repos = array();
         foreach($config->require as $dependency){
             $output->writeln(' - Getting dependencies for <info>'.$dependency.'</info>');
             $resolver = new DependencyResolver($dependency);

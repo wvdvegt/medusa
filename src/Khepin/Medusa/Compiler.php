@@ -31,11 +31,11 @@ class Compiler
         $finder->files()
             ->ignoreVCS(true)
             ->name('*.php')
-            ->in([
-                __DIR__.'/../../../vendor/symfony/symfony/src/Symfony/Component/Console',
-                __DIR__.'/../../../vendor/symfony/symfony/src/Symfony/Component/EventDispatcher',
-                __DIR__.'/../../../vendor/symfony/symfony/src/Symfony/Component/Process',
-            ])
+            ->in(array(
+                __DIR__.'/../../../vendor/symfony/console/Symfony/Component/Console',
+                __DIR__.'/../../../vendor/symfony/event-dispatcher/Symfony/Component/EventDispatcher',
+                __DIR__.'/../../../vendor/symfony/process/Symfony/Component/Process'
+            ))
         ;
         $finders[] = $finder;
 
