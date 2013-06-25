@@ -30,7 +30,7 @@ For now, you can do the following:
 * Download the .phar archive from the downloads section
 * Download the .phar archive for SATIS
 * Put them both in a folder on your machine
-* Inside of that folder, create a `web/` and a `repositories/` folder
+* Inside of that folder, create a `web/` and a `web/repositories/` folder
 * Create a `medusa.json` file that looks like this:
 
     {
@@ -40,8 +40,11 @@ For now, you can do the following:
             //... List all the packages you want here, there dependencies can be
             // auto downloaded as well
         ],
-        "repodir":"repositories",
-        "satisconfig":"satis.json"
+        "repodir": "web/repositories",
+        // Optional URL to satis (if not hosted locally)
+        "satisurl": "http://user:password@satis.host:port/repo-home",
+        // Target path for generated satis configuration
+        "satisconfig": "satis.json"
     }
 
 * Create a satis config file skeleton like this:
@@ -50,6 +53,7 @@ For now, you can do the following:
         "name": "My Repository",
         "homepage": "http://packages.example.org",
         "repositories": [
+            // Optionally list repositories not updateable by medusa
         ],
         "require-all": true // if you want to also mirror the dependencies from each package
     }
@@ -64,7 +68,7 @@ repodir. And finally update your satis.json file with your new config.
 * Run the satis build command: `./satis.phar build satis.json web/`
 * Once a day run:
 
-    ./medusa.phar update repos
+    ./medusa.phar update web/repositories
     ./satis.phar build satis.json web/
 
 To update all repos and rebuild the satis config.

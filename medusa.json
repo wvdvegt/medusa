@@ -3,5 +3,6 @@
         "guzzle/guzzle"
     ],
     "repodir": "repos",
+    "satisurl": "http://user:password@satis.host:port/repo-home",
     "satisconfig": "config.json"
 }
