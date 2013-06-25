@@ -8,7 +8,6 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Command\Command;
 use Khepin\Medusa\DependencyResolver;
 use Guzzle\Service\Client;
-use Khepin\Medusa\Downloader;
 use Symfony\Component\Console\Input\ArrayInput;
 
 class MirrorCommand extends Command
@@ -21,7 +20,7 @@ class MirrorCommand extends Command
             ->setName('mirror')
             ->setDescription('Mirrors all repositories given a config file')
             ->setDefinition(array(
-                new InputArgument('config', InputArgument::OPTIONAL, 'A config file', null),
+                new InputArgument('config', InputArgument::OPTIONAL, 'A config file', 'medusa.json'),
             ))
         ;
     }
@@ -55,6 +54,9 @@ class MirrorCommand extends Command
             );
             if(!is_null($config->satisconfig)){
                 $arguments['--config-file'] = $config->satisconfig;
+            }
+            if (!is_null($config->satisurl)) {
+                $arguments['--satis-url'] = $config->satisurl;
             }
 
             $input = new ArrayInput($arguments);

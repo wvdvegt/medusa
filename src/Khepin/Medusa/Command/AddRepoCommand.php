@@ -10,6 +10,8 @@ use Symfony\Component\Process\Process;
 use Guzzle\Service\Client;
 use Composer\Json\JsonFile;
 use Khepin\Medusa\DependencyResolver;
+use Khepin\Medusa\Downloader;
+use Khepin\Medusa\UpdateServerInfo;
 
 class AddRepoCommand extends Command
 {
@@ -29,8 +31,9 @@ class AddRepoCommand extends Command
             ->setDefinition(array(
                 new InputArgument('package', InputArgument::REQUIRED, 'The name of a composer package', null),
                 new InputArgument('repos-dir', InputArgument::OPTIONAL, 'Location where to output built files', null),
-                new InputOption('config-file', null, InputOption::VALUE_NONE, 'The config file to update with the new info'),
+                new InputOption('config-file', null, InputOption::VALUE_REQUIRED, 'The config file to update with the new info'),
                 new InputOption('with-deps', null, InputOption::VALUE_NONE, 'If set, the package dependencies will be downloaded too'),
+                new InputOption('satis-url', null, InputOption::VALUE_REQUIRED, 'Base URL for mirrored git repositories'),
             ))
             ->setHelp(<<<EOT
 The <info>mirror</info> command reads the given composer.lock file and mirrors
@@ -49,6 +52,7 @@ EOT
     {
         $dir = $input->getArgument('repos-dir');
         $package = $input->getArgument('package');
+        $satisUrl = $input->getOption('satis-url');
 
         $this->output = $output;
 
@@ -65,8 +69,19 @@ EOT
             if($input->getOption('config-file')){
                 $file = new JsonFile($input->getOption('config-file'));
                 $config = $file->read();
-                $url = realpath($dir.'/'.$package.'.git');
-                $repo = array('type' => 'git', 'url' => 'file:///'.$url);
+                if ($satisUrl) {
+                    $url = $package.'.git';
+                    $repo = array(
+                        'type' => 'git',
+                        'url' => $satisUrl . '/' . $url
+                    );
+                } else {
+                    $url = ltrim(realpath($dir.'/'.$package.'.git'), '/');
+                    $repo = array(
+                        'type' => 'git',
+                        'url' => 'file:///' . $url
+                    );
+                }
                 $config['repositories'][] = $repo;
                 $file->write($config);
             }
@@ -88,7 +103,9 @@ EOT
             return;
         }
         $package = $package->package->name;
-        $downloader = new \Khepin\Medusa\Downloader($package, $url);
+        $downloader = new Downloader($package, $url);
         $downloader->download($outputDir);
+        $updater = new UpdateServerInfo($package);
+        $updater->update($outputDir);
     }
 }
