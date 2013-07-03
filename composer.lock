@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "0ade79a3143b093bd785d3307d38487b",
+    "hash": "ab53438041ef8137af13c64b7b17d574",
     "packages": [
         {
             "name": "composer/composer",
@@ -557,8 +557,7 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "composer/satis": 20,
-        "symfony/console": 20
+        "composer/satis": 20
     },
     "platform": [
 

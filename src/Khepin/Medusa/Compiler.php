@@ -1,4 +1,9 @@
 <?php
+/**
+ * @copyright 2013 Sébastien Armand
+ * @license http://opensource.org/licenses/MIT MIT
+ */
+
 namespace Khepin\Medusa;
 
 use Symfony\Component\Finder\Finder;
