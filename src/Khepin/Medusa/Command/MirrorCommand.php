@@ -25,8 +25,14 @@ class MirrorCommand extends Command
             ->setName('mirror')
             ->setDescription('Mirrors all repositories given a config file')
             ->setDefinition(array(
-                new InputArgument('config', InputArgument::OPTIONAL, 'A config file', 'medusa.json'),
+                new InputArgument('config', InputArgument::OPTIONAL, 'A config file', 'medusa.json')
             ))
+            ->setHelp(<<<EOT
+The <info>mirror</info> command reads the given medusa.json file and mirrors
+the git repository for each package (including dependencies), so they can be used locally.
+<warning>This will only work for repos hosted on github.com.</warning>
+EOT
+             )
         ;
     }
 
@@ -38,31 +44,37 @@ class MirrorCommand extends Command
     {
         $output->writeln('<info>First getting all dependencies</info>');
         $this->guzzle = new Client('http://packagist.org');
-        $config = json_decode(file_get_contents($input->getArgument('config')));
+        $medusaConfig = $input->getArgument('config');
+        $config = json_decode(file_get_contents($medusaConfig));
         $repos = array();
-        foreach($config->require as $dependency){
+
+	if (!$config) {
+            throw new \Exception($medusaConfig . ': invalid json configuration');
+        }
+
+        foreach ($config->require as $dependency) {
             $output->writeln(' - Getting dependencies for <info>'.$dependency.'</info>');
             $resolver = new DependencyResolver($dependency);
             $deps = $resolver->resolve();
             $repos = array_merge($repos, $deps);
         }
+
+        foreach ($config->repositories as $repository) {
+            $repos[] = $repository->name;
+        }
+
         $repos = array_unique($repos);
 
         $output->writeln('<info>Create mirror repositories</info>');
-        foreach($repos as $repo){
+
+        foreach ($repos as $repo) {
             $command = $this->getApplication()->find('add');
 
             $arguments = array(
-                'command'   => 'add',
-                'package'   => $repo,
-                'repos-dir' => $config->repodir,
+                'command'     => 'add',
+                'package'     => $repo,
+                'config'      => $medusaConfig,
             );
-            if(!is_null($config->satisconfig)){
-                $arguments['--config-file'] = $config->satisconfig;
-            }
-            if (!is_null($config->satisurl)) {
-                $arguments['--satis-url'] = $config->satisurl;
-            }
 
             $input = new ArrayInput($arguments);
             $returnCode = $command->run($input, $output);

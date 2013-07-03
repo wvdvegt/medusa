@@ -18,7 +18,7 @@ on your local machine.
 
 It will only work with github hosted projects for now.
 
-It has very poor documentation
+It has very poor documentation.
 
 It is a very early release, there might be bugs, and the API to use it is
 definitely confusing.
@@ -35,6 +35,14 @@ For now, you can do the following:
 
 ```
     {
+        // vcs repositories not in packagist
+        "repositories": [
+            {
+                // pseudo package name; used for repo directory structure
+                "name": "myvendor/package",
+                "url": "git@othervcs:myvendor/package.git"
+            }
+        ]
         "require": [
             "vendor/package",
             "othervendor/otherpackage",
@@ -43,7 +51,7 @@ For now, you can do the following:
         ],
         "repodir": "web/repositories",
         // Optional URL to satis (if not hosted locally)
-        "satisurl": "http://user:password@satis.host:port/repo-home",
+        "satisurl": "http://user:password@satis.host:port/repositories",
         // Target path for generated satis configuration
         "satisconfig": "satis.json"
     }
@@ -71,20 +79,18 @@ specified repodir. Finally, it updates your satis.json file with your new config
 * Once a day run:
 
 ```
-    ./medusa.phar update web/repositories
+    ./medusa.phar update medusa.json
     ./satis.phar build satis.json web/
 ```
 To update all repos and rebuild the satis config.
 
 # Other available commands:
 
-`add [--config-file] [--with-deps] package [repos-dir]`
+`add [--with-deps] package [config-file]`
 
-* `--config-file` is the satis config file (so it can be updated)
-* `--with-deps` set to true or false to decide if you want to also mirror the new
-package's dependencies
+* `--with-deps` if you want to also mirror the new package's dependencies
 * `package` is the package name you want to mirror (eg: symfony/symfony)
-* `repos-dir` in our case would be `repositories`
+* `config-file` is the medusa.json config file; the specified satis.json config file will be updated
 
 # Make composer use it
 
@@ -95,7 +101,10 @@ In your composer global config file add:
 ```
     {
         "repositories": [
-            { "type": "composer", "url": "http://localsatis.url"}
+            {
+                "type": "composer",
+                "url": "http://my.satis.url"
+            }
         ]
     }
 ```

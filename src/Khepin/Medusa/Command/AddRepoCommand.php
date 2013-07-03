@@ -21,6 +21,7 @@ use Khepin\Medusa\UpdateServerInfo;
 class AddRepoCommand extends Command
 {
     protected $guzzle;
+    protected $config;
 
     public function __construct()
     {
@@ -34,15 +35,12 @@ class AddRepoCommand extends Command
             ->setName('add')
             ->setDescription('Add a package to satis')
             ->setDefinition(array(
-                new InputArgument('package', InputArgument::REQUIRED, 'The name of a composer package', null),
-                new InputArgument('repos-dir', InputArgument::OPTIONAL, 'Location where to output built files', null),
-                new InputOption('config-file', null, InputOption::VALUE_REQUIRED, 'The config file to update with the new info'),
                 new InputOption('with-deps', null, InputOption::VALUE_NONE, 'If set, the package dependencies will be downloaded too'),
-                new InputOption('satis-url', null, InputOption::VALUE_REQUIRED, 'Base URL for mirrored git repositories'),
+                new InputArgument('package', InputArgument::REQUIRED, 'The name of a composer package', null),
+                new InputArgument('config', InputArgument::OPTIONAL, 'A config file', 'medusa.json')
             ))
             ->setHelp(<<<EOT
-The <info>mirror</info> command reads the given composer.lock file and mirrors
-each git repository so they can be used locally.
+The <info>add</info> command mirrors the specified package's git repository.
 <warning>This will only work for repos hosted on github.</warning>
 EOT
             )
@@ -55,62 +53,124 @@ EOT
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $dir = $input->getArgument('repos-dir');
         $package = $input->getArgument('package');
-        $satisUrl = $input->getOption('satis-url');
-
+        $this->config = json_decode(file_get_contents($input->getArgument('config')));
         $this->output = $output;
 
-        $deps = array($package);
-        if($input->getOption('with-deps')){
-            $resolver = new DependencyResolver($package);
-            $deps = $resolver->resolve();
-        }
-        foreach($deps as $package){
-            $output->writeln(' - Mirroring <info>'.$package.'</info>');
-            $this->getGitRepo($package, $dir);
-            $output->writeln('');
+        $url = $this->getRepositoryUrl($package);
 
-            if($input->getOption('config-file')){
-                $file = new JsonFile($input->getOption('config-file'));
-                $config = $file->read();
-                if ($satisUrl) {
-                    $url = $package.'.git';
-                    $repo = array(
-                        'type' => 'git',
-                        'url' => $satisUrl . '/' . $url
-                    );
-                } else {
-                    $url = ltrim(realpath($dir.'/'.$package.'.git'), '/');
-                    $repo = array(
-                        'type' => 'git',
-                        'url' => 'file:///' . $url
-                    );
-                }
-                $config['repositories'][] = $repo;
-                $file->write($config);
-            }
+        if (!$url) {
+            $this->mirrorPackagistAndRepositories($input->getOption('with-deps'),  $package);
+        } else {
+            $this->mirrorRepositoryOnly($package, $url);
         }
     }
 
-    protected function getGitRepo($package, $outputDir)
+    protected function mirrorRepositoryOnly($package, $url)
     {
+        $this->output->writeln(' - Mirroring <info>'.$package.'</info>');
+        $this->getGitRepo($package, $url);
+        $this->output->writeln('');
+
+        $this->updateSatisConfig($package);
+    }
+
+    protected function mirrorPackagistAndRepositories($withDependencies, $package)
+    {
+        $deps = array($package);
+
+        if ($withDependencies) {
+            $resolver = new DependencyResolver($package);
+            $deps = $resolver->resolve();
+        }
+
+        foreach ($deps as $package) {
+            $this->output->writeln(' - Mirroring <info>'.$package.'</info>');
+            $this->getGitRepo($package);
+            $this->output->writeln('');
+
+            $this->updateSatisConfig($package);
+        }
+    }
+
+    protected function updateSatisConfig($package)
+    {
+        $satisConfig = $this->config->satisconfig;
+        $satisUrl = $this->config->satisurl;
+
+        if ($satisConfig) {
+            $file = new JsonFile($satisConfig);
+            $config = $file->read();
+
+            if ($satisUrl) {
+                $url = $package.'.git';
+                $repo = array(
+                    'type' => 'git',
+                    'url' => $satisUrl . '/' . $url
+                );
+            } else {
+                $url = ltrim(realpath($this->config->repodir.'/'.$package.'.git'), '/');
+                $repo = array(
+                    'type' => 'git',
+                    'url' => 'file:///' . $url
+                );
+            }
+
+            $config['repositories'][] = $repo;
+            $file->write($config);
+        }
+    }
+
+    protected function getGitRepo($package, $url = null)
+    {
+        $outputDir = $this->config->repodir;
         $dir = $outputDir.'/'.$package.'.git';
-        if(is_dir($dir)){
+
+        if (is_dir($dir)) {
             $this->output->writeln('  <comment>The repo already exists. Try updating it instead.</comment>');
+
             return;
         }
-        $response = $this->guzzle->get('/packages/'.$package.'.json')->send();
-        $response = $response->getBody(true);
-        $package = json_decode($response);
-        $url = $package->package->repository;
-        if(strpos($url, 'github') === false){
+
+        if (!$url) {
+            $response = $this->guzzle->get('/packages/'.$package.'.json')->send();
+            $response = $response->getBody(true);
+
+            $packageInfo = json_decode($response);
+
+            $package = $packageInfo->package->name;
+            $url = $packageInfo->package->repository;
+        }
+
+        if (strpos($url, 'github') === false) {
             return;
         }
-        $package = $package->package->name;
+
         $downloader = new Downloader($package, $url);
         $downloader->download($outputDir);
         $updater = new UpdateServerInfo($package);
         $updater->update($outputDir);
+    }
+
+    /**
+     * Get repository URL override
+     *
+     * @param string $package
+     *
+     * @return string|null
+     */
+    protected function getRepositoryUrl($package)
+    {
+        if (empty($this->config->repositories)) {
+            return null;
+        }
+
+        foreach ($this->config->repositories as $repo) {
+            if ($repo->name === $package) {
+                return $repo->url;
+            }
+        }
+
+        return null;
     }
 }

@@ -18,7 +18,6 @@ class Compiler
 
         $phar = new \Phar($pharFile, 0, 'medusa.phar');
         $phar->setSignatureAlgorithm(\Phar::SHA1);
-
         $phar->startBuffering();
 
         $finders = array();
@@ -87,9 +86,7 @@ class Compiler
 
         // Stubs
         $phar->setStub($this->getStub());
-
         $phar->stopBuffering();
-
         $phar->compressFiles(\Phar::GZ);
 
         unset($phar);
@@ -100,6 +97,7 @@ class Compiler
         $path = str_replace(dirname(dirname(dirname(__DIR__))).DIRECTORY_SEPARATOR, '', $file->getRealPath());
 
         $content = file_get_contents($file);
+
         if ($strip) {
             $content = $this->stripWhitespace($content);
         } elseif ('LICENSE' === basename($file)) {
@@ -113,6 +111,7 @@ class Compiler
     {
         $content = file_get_contents(__DIR__.'/../../../bin/medusa');
         $content = preg_replace('{^#!/usr/bin/env php\s*}', '', $content);
+
         $phar->addFromString('bin/medusa', $content);
     }
 
@@ -123,6 +122,7 @@ class Compiler
         }
 
         $output = '';
+
         foreach (token_get_all($source) as $token) {
             if (is_string($token)) {
                 $output .= $token;
