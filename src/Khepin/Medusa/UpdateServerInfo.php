@@ -19,7 +19,7 @@ class UpdateServerInfo
 
     public function update($in_dir)
     {
-        $cmd = 'git update-server-info';
+        $cmd = 'git update-server-info -f';
         $dir = $in_dir.'/'.$this->package.'.git';
 
         if (!is_dir($dir)) {
