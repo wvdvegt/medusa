@@ -11,20 +11,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "94ff1ed8f7986b532dfc3558b454daa267da5d2b"
+                "reference": "46e55541e73256b8a5acb9dba4e1af6209dfdf53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/94ff1ed8f7986b532dfc3558b454daa267da5d2b",
-                "reference": "94ff1ed8f7986b532dfc3558b454daa267da5d2b",
+                "url": "https://api.github.com/repos/composer/composer/zipball/46e55541e73256b8a5acb9dba4e1af6209dfdf53",
+                "reference": "46e55541e73256b8a5acb9dba4e1af6209dfdf53",
                 "shasum": ""
             },
             "require": {
                 "justinrainbow/json-schema": "1.1.*",
                 "php": ">=5.3.2",
                 "seld/jsonlint": "1.*",
-                "symfony/console": "~2.3@dev",
-                "symfony/finder": "~2.1",
+                "symfony/console": "~2.3",
+                "symfony/finder": "~2.2",
                 "symfony/process": "~2.1@dev"
             },
             "require-dev": {
@@ -72,7 +72,7 @@
                 "dependency",
                 "package"
             ],
-            "time": "2013-07-01 07:58:07"
+            "time": "2013-09-26 13:51:49"
         },
         {
             "name": "composer/satis",
@@ -80,19 +80,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/satis.git",
-                "reference": "059588ef0fd0977964ad13637e02012519686202"
+                "reference": "4e4516874e954403cf42b75c1f366833200ac9e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/satis/zipball/059588ef0fd0977964ad13637e02012519686202",
-                "reference": "059588ef0fd0977964ad13637e02012519686202",
+                "url": "https://api.github.com/repos/composer/satis/zipball/4e4516874e954403cf42b75c1f366833200ac9e0",
+                "reference": "4e4516874e954403cf42b75c1f366833200ac9e0",
                 "shasum": ""
             },
             "require": {
                 "composer/composer": "1.0.*@dev",
                 "php": ">=5.3.2",
-                "symfony/console": ">=2.1,<3.0",
-                "twig/twig": ">=1.7,<2.0"
+                "symfony/console": "~2.1@dev",
+                "symfony/process": "@dev",
+                "twig/twig": "~1.7"
             },
             "bin": [
                 "bin/satis"
@@ -127,7 +128,7 @@
                 "package",
                 "repository"
             ],
-            "time": "2013-06-13 11:17:28"
+            "time": "2013-09-19 11:20:08"
         },
         {
             "name": "guzzle/guzzle",
@@ -310,12 +311,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "b68fd0262ebae63f796d188f48eaa470044861fd"
+                "reference": "e430d7416327a93be77b3c4844c191a10cc8c1c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/b68fd0262ebae63f796d188f48eaa470044861fd",
-                "reference": "b68fd0262ebae63f796d188f48eaa470044861fd",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/e430d7416327a93be77b3c4844c191a10cc8c1c7",
+                "reference": "e430d7416327a93be77b3c4844c191a10cc8c1c7",
                 "shasum": ""
             },
             "require": {
@@ -354,7 +355,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2013-06-23 08:16:33"
+            "time": "2013-09-25 06:04:58"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -363,12 +364,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/EventDispatcher.git",
-                "reference": "v2.1.11"
+                "reference": "e1d18ff0ff6f3e45ac82f000bc221135df635527"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/v2.1.11",
-                "reference": "v2.1.11",
+                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/e1d18ff0ff6f3e45ac82f000bc221135df635527",
+                "reference": "e1d18ff0ff6f3e45ac82f000bc221135df635527",
                 "shasum": ""
             },
             "require": {
@@ -412,12 +413,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Finder.git",
-                "reference": "d8da924d4f7d9f325ebd72feefee40c17a3e9104"
+                "reference": "e2ce3164ab58b4d54612e630571f158035ee8603"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Finder/zipball/d8da924d4f7d9f325ebd72feefee40c17a3e9104",
-                "reference": "d8da924d4f7d9f325ebd72feefee40c17a3e9104",
+                "url": "https://api.github.com/repos/symfony/Finder/zipball/e2ce3164ab58b4d54612e630571f158035ee8603",
+                "reference": "e2ce3164ab58b4d54612e630571f158035ee8603",
                 "shasum": ""
             },
             "require": {
@@ -450,7 +451,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "http://symfony.com",
-            "time": "2013-06-23 08:16:33"
+            "time": "2013-09-19 09:47:34"
         },
         {
             "name": "symfony/process",
@@ -459,12 +460,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Process.git",
-                "reference": "f3f84fec23ce3ff7d0510c308c7842729cb0ba8c"
+                "reference": "4adfa47d187f90638261566ba0a0ab1c1291b9bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Process/zipball/f3f84fec23ce3ff7d0510c308c7842729cb0ba8c",
-                "reference": "f3f84fec23ce3ff7d0510c308c7842729cb0ba8c",
+                "url": "https://api.github.com/repos/symfony/Process/zipball/4adfa47d187f90638261566ba0a0ab1c1291b9bd",
+                "reference": "4adfa47d187f90638261566ba0a0ab1c1291b9bd",
                 "shasum": ""
             },
             "require": {
@@ -497,7 +498,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "http://symfony.com",
-            "time": "2013-06-23 08:16:33"
+            "time": "2013-09-27 14:31:42"
         },
         {
             "name": "twig/twig",
@@ -505,12 +506,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig.git",
-                "reference": "6f0753f0ff4047a870f57e7567446242b38b37ac"
+                "reference": "a0abed01eb4da79838d06db823d82a9c5cf6e6d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/6f0753f0ff4047a870f57e7567446242b38b37ac",
-                "reference": "6f0753f0ff4047a870f57e7567446242b38b37ac",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/a0abed01eb4da79838d06db823d82a9c5cf6e6d0",
+                "reference": "a0abed01eb4da79838d06db823d82a9c5cf6e6d0",
                 "shasum": ""
             },
             "require": {
@@ -519,7 +520,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.13-dev"
+                    "dev-master": "1.14-dev"
                 }
             },
             "autoload": {
@@ -546,7 +547,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2013-06-27 06:24:36"
+            "time": "2013-09-29 07:27:48"
         }
     ],
     "packages-dev": [
