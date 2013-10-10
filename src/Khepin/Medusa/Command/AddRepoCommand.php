@@ -16,7 +16,6 @@ use Guzzle\Service\Client;
 use Composer\Json\JsonFile;
 use Khepin\Medusa\DependencyResolver;
 use Khepin\Medusa\Downloader;
-use Khepin\Medusa\UpdateServerInfo;
 
 class AddRepoCommand extends Command
 {
@@ -139,8 +138,6 @@ class AddRepoCommand extends Command
 
         $downloader = new Downloader($package, $url);
         $downloader->download($outputDir);
-        $updater = new UpdateServerInfo($package);
-        $updater->update($outputDir);
     }
 
     /**

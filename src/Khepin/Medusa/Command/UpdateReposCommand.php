@@ -41,11 +41,12 @@ EOT
         $config = json_decode(file_get_contents($input->getArgument('config')));
         $dir = $config->repodir;
         $repos = glob($dir.'/*/*.git');
-        $cmd = 'cd %s && git fetch';
+        $fetchCmd = 'cd %s && git fetch';
+        $updateCmd = 'git update-server-info -f';
 
         foreach ($repos as $repo) {
             $output->writeln(' - Fetching latest changes in <info>'.$repo.'</info>');
-            $process = new Process(sprintf($cmd, $repo));
+            $process = new Process(sprintf($fetchCmd, $repo));
             $process->run();
 
             if (!$process->isSuccessful()) {
@@ -53,6 +54,14 @@ EOT
             }
 
             $output->writeln($process->getOutput());
+
+            $process = new Process($updateCmd, $repo);
+            $process->setTimeout(3600);
+            $process->run();
+
+            if (!$process->isSuccessful()) {
+                throw new \Exception($process->getErrorOutput());
+            }
         }
     }
 }
