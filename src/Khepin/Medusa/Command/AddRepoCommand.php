@@ -39,11 +39,6 @@ class AddRepoCommand extends Command
                 new InputArgument('package', InputArgument::REQUIRED, 'The name of a composer package', null),
                 new InputArgument('config', InputArgument::OPTIONAL, 'A config file', 'medusa.json')
             ))
-            ->setHelp(<<<EOT
-The <info>add</info> command mirrors the specified package's git repository.
-<warning>This will only work for repos hosted on github.</warning>
-EOT
-            )
         ;
     }
 
@@ -140,10 +135,6 @@ EOT
 
             $package = $packageInfo->package->name;
             $url = $packageInfo->package->repository;
-        }
-
-        if (strpos($url, 'github') === false) {
-            return;
         }
 
         $downloader = new Downloader($package, $url);

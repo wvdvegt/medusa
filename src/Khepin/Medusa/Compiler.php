@@ -35,11 +35,7 @@ class Compiler
         $finder->files()
             ->ignoreVCS(true)
             ->name('*.php')
-            ->in(array(
-                __DIR__.'/../../../vendor/symfony/console/Symfony/Component/Console',
-                __DIR__.'/../../../vendor/symfony/event-dispatcher/Symfony/Component/EventDispatcher',
-                __DIR__.'/../../../vendor/symfony/process/Symfony/Component/Process'
-            ))
+            ->in(__DIR__.'/../../../vendor/symfony')
         ;
         $finders[] = $finder;
 
@@ -65,6 +61,30 @@ class Compiler
             ->ignoreVCS(true)
             ->name('*.php')
             ->in(__DIR__.'/../../../vendor/guzzle')
+        ;
+        $finders[] = $finder;
+
+        $finder = new Finder();
+        $finder->files()
+            ->ignoreVCS(true)
+            ->name('*.php')
+            ->in(__DIR__.'/../../../vendor/seld')
+        ;
+        $finders[] = $finder;
+
+        $finder = new Finder();
+        $finder->files()
+            ->ignoreVCS(true)
+            ->name('*.php')
+            ->in(__DIR__.'/../../../vendor/justinrainbow')
+        ;
+        $finders[] = $finder;
+
+        $finder = new Finder();
+        $finder->files()
+            ->ignoreVCS(true)
+            ->name('*.php')
+            ->in(__DIR__.'/../../../vendor/twig')
         ;
         $finders[] = $finder;
 
