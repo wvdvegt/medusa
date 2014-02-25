@@ -65,6 +65,7 @@ class DependencyResolver
             'metadata/metadata' => 'jms/metadata',
             'symfony/doctrine-bundle' => 'doctrine/doctrine-bundle',
             'symfony/translator' => 'symfony/translation',
+            'willdurand/expose-translation-bundle' => 'willdurand/js-translation-bundle',
 
             // obsolete
             'zendframework/zend-registry' => null,
