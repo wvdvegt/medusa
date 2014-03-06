@@ -111,6 +111,7 @@ class AddRepoCommand extends Command
             }
 
             $config['repositories'][] = $repo;
+            $config['repositories'] = array_unique($config['repositories']);
             $file->write($config);
         }
     }
