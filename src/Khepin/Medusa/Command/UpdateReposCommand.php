@@ -43,8 +43,6 @@ EOT
         $repos = glob($dir.'/*/*.git');
 
         $fetchCmd = 'cd %s && git fetch';
-        $updateCmd = 'cd %s && git update-server-info -f';
-        $fsckCmd = 'cd %s && git fsck';
 
         foreach ($repos as $repo) {
             $output->writeln(' - Fetching latest changes in <info>'.$repo.'</info>');
@@ -56,22 +54,6 @@ EOT
             }
 
             $output->writeln($process->getOutput());
-
-            $process = new Process(sprintf($updateCmd, $repo));
-            $process->setTimeout(3600);
-            $process->run();
-
-            if (!$process->isSuccessful()) {
-                throw new \Exception($process->getErrorOutput());
-            }
-
-            $process = new Process(sprintf($fsckCmd, $repo));
-            $process->setTimeout(3600);
-            $process->run();
-
-            if (!$process->isSuccessful()) {
-                throw new \Exception($process->getErrorOutput());
-            }
         }
     }
 }

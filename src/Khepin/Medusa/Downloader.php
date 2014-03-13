@@ -22,14 +22,35 @@ class Downloader
 
     public function download($in_dir)
     {
-        $cmd = 'git clone --mirror %s %s';
-        $dir = $in_dir.'/'.$this->package.'.git';
+        $repo = $in_dir.'/'.$this->package;
+        $dir = $repo.'.git';
 
         if (is_dir($dir)) {
             return;
         }
 
+        $cmd = 'git clone --mirror %s %s';
+
         $process = new Process(sprintf($cmd, $this->url, $dir));
+        $process->setTimeout(3600);
+        $process->run();
+
+        if (!$process->isSuccessful()) {
+            throw new \Exception($process->getErrorOutput());
+        }
+
+        $cmd = 'cd %s && git update-server-info -f';
+
+        $process = new Process(sprintf($cmd, $repo));
+        $process->setTimeout(3600);
+        $process->run();
+
+        if (!$process->isSuccessful()) {
+            throw new \Exception($process->getErrorOutput());
+        }
+
+        $cmd = 'cd %s && git fsck';
+        $process = new Process(sprintf($cmd, $repo));
         $process->setTimeout(3600);
         $process->run();
 
