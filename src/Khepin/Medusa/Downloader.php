@@ -22,16 +22,15 @@ class Downloader
 
     public function download($in_dir)
     {
-        $repo = $in_dir.'/'.$this->package;
-        $dir = $repo.'.git';
+        $repo = $in_dir . '/' . $this->package . ".git";
 
-        if (is_dir($dir)) {
+        if (is_dir($repo)) {
             return;
         }
 
         $cmd = 'git clone --mirror %s %s';
 
-        $process = new Process(sprintf($cmd, $this->url, $dir));
+        $process = new Process(sprintf($cmd, $this->url, $repo));
         $process->setTimeout(3600);
         $process->run();
 
