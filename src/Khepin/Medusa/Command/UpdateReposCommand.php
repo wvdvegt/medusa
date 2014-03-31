@@ -43,10 +43,20 @@ EOT
         $repos = glob($dir.'/*/*.git');
 
         $fetchCmd = 'cd %s && git fetch';
+        $updateCmd = 'cd %s && git update-server-info -f';
 
         foreach ($repos as $repo) {
             $output->writeln(' - Fetching latest changes in <info>'.$repo.'</info>');
             $process = new Process(sprintf($fetchCmd, $repo));
+            $process->run();
+
+            if (!$process->isSuccessful()) {
+                throw new \Exception($process->getErrorOutput());
+            }
+
+            $output->writeln($process->getOutput());
+
+            $process = new Process(sprintf($updateCmd, $repo));
             $process->run();
 
             if (!$process->isSuccessful()) {
