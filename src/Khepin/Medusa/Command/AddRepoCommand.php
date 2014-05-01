@@ -111,9 +111,20 @@ class AddRepoCommand extends Command
             }
 
             $config['repositories'][] = $repo;
-            $config['repositories'] = array_unique($config['repositories']);
+            $config['repositories'] = $this->deduplicate($config['repositories']);
             $file->write($config);
         }
+    }
+
+    private function deduplicate($repositories)
+    {
+        $newRepositories = array();
+
+        foreach ($repositories as $repository) {
+            $newRepositories[$repository['url']] = $repository;
+        }
+
+        return array_values($newRepositories);
     }
 
     protected function getGitRepo($package, $url = null)
