@@ -17,7 +17,7 @@ class Downloader
     public function __construct($package, $url)
     {
         $this->package = $package;
-        $this->url = $url;
+        $this->url = preg_replace('~^git@github.com:~', 'git://github.com/', $url);
     }
 
     public function download($in_dir)
