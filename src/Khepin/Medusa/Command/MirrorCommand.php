@@ -52,17 +52,17 @@ EOT
             throw new \Exception($medusaConfig . ': invalid json configuration');
         }
 
+        foreach ($config->repositories as $repository) {
+            if (property_exists($repository, 'name')) {
+                $repos[] = $repository->name;
+            }
+        }
+
         foreach ($config->require as $dependency) {
             $output->writeln(' - Getting dependencies for <info>'.$dependency.'</info>');
             $resolver = new DependencyResolver($dependency);
             $deps = $resolver->resolve();
             $repos = array_merge($repos, $deps);
-        }
-
-        foreach ($config->repositories as $repository) {
-            if (property_exists($repository, 'name')) {
-                $repos[] = $repository->name;
-            }
         }
 
         $repos = array_unique($repos);
