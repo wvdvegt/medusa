@@ -43,7 +43,7 @@ EOT
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $output->writeln('<info>First getting all dependencies</info>');
-        $this->guzzle = new Client('http://packagist.org');
+        $this->guzzle = new Client('https://packagist.org');
         $medusaConfig = $input->getArgument('config');
         $config = json_decode(file_get_contents($medusaConfig));
         $repos = array();
