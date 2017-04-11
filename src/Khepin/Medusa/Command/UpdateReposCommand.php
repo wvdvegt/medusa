@@ -42,7 +42,7 @@ EOT
         $dir = $config->repodir;
         $repos = glob($dir.'/*/*.git');
 
-        $fetchCmd = 'cd %s && git fetch';
+        $fetchCmd = 'cd %s && git fetch --prune';
         $updateCmd = 'cd %s && git update-server-info -f';
 
         foreach ($repos as $repo) {
