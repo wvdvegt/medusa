@@ -25,7 +25,7 @@ class DependencyResolver
         $deps = array($this->package);
         $resolved = array();
 
-        $guzzle = new Client('http://packagist.org');
+        $guzzle = new Client('https://packagist.org');
 
         while (count($deps) > 0) {
             $package = $this->rename(array_pop($deps));

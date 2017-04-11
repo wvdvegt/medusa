@@ -25,7 +25,7 @@ class AddRepoCommand extends Command
     public function __construct()
     {
         parent::__construct();
-        $this->guzzle = new Client('http://packagist.org');
+        $this->guzzle = new Client('https://packagist.org');
     }
 
     protected function configure()
