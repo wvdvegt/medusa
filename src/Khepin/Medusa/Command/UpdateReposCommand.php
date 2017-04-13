@@ -48,7 +48,7 @@ EOT
         foreach ($repos as $repo) {
             $output->writeln(' - Fetching latest changes in <info>'.$repo.'</info>');
             $process = new Process(sprintf($fetchCmd, $repo));
-            $process->run();
+            $process->setTimeout(300)->run();
 
             if (!$process->isSuccessful()) {
                 throw new \Exception($process->getErrorOutput());
@@ -57,7 +57,7 @@ EOT
             $output->writeln($process->getOutput());
 
             $process = new Process(sprintf($updateCmd, $repo));
-            $process->run();
+            $process->setTimeout(600)->run();
 
             if (!$process->isSuccessful()) {
                 throw new \Exception($process->getErrorOutput());
