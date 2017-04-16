@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3346fc20621ae159ca19a22120547bd7",
+    "content-hash": "d83df0e02a6f498e4769be7d148e158e",
     "packages": [
         {
             "name": "composer/composer",
@@ -133,16 +133,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "v2.8.1",
+            "version": "v2.8.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "9f57a330550ff07a555a8f122ff3265e3f035843"
+                "reference": "6738770a1d9e299cec6c2079220628ee8c739483"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/9f57a330550ff07a555a8f122ff3265e3f035843",
-                "reference": "9f57a330550ff07a555a8f122ff3265e3f035843",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/6738770a1d9e299cec6c2079220628ee8c739483",
+                "reference": "6738770a1d9e299cec6c2079220628ee8c739483",
                 "shasum": ""
             },
             "require": {
@@ -201,7 +201,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2012-07-16T21:08:54+00:00"
+            "time": "2012-10-16T00:42:47+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
