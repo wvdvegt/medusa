@@ -48,7 +48,7 @@ EOT
         $config = json_decode(file_get_contents($medusaConfig));
         $repos = array();
 
-	if (!$config) {
+        if (!$config) {
             throw new \Exception($medusaConfig . ': invalid json configuration');
         }
 
