@@ -4,7 +4,7 @@
     "license": "MIT",
     "require": {
         "composer/satis": "dev-master",
-        "guzzle/guzzle": "v2.8.1"
+        "guzzlehttp/guzzle": "2.8.1"
     },
     "minimum-stability": "dev",
     "authors": [
