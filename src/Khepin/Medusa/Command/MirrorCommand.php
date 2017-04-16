@@ -48,13 +48,17 @@ EOT
         $config = json_decode(file_get_contents($medusaConfig));
         $repos = array();
 
-	if (!$config) {
+        if (!$config) {
             throw new \Exception($medusaConfig . ': invalid json configuration');
         }
 
-        foreach ($config->repositories as $repository) {
-            if (property_exists($repository, 'name')) {
-                $repos[] = $repository->name;
+        // Check if there is a 'repositories' key in the config.
+        // Otherwise we can ignore it.
+        if (property_exists($config, 'repositories')) {
+            foreach ($config->repositories as $repository) {
+                if (property_exists($repository, 'name')) {
+                    $repos[] = $repository->name;
+                }
             }
         }
 
