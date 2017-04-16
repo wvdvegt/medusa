@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "73b9c15be75de79cc5c4a165b1f76f41",
+    "content-hash": "d83df0e02a6f498e4769be7d148e158e",
     "packages": [
         {
             "name": "composer/composer",
@@ -132,17 +132,17 @@
             "time": "2014-02-27 15:45:34"
         },
         {
-            "name": "guzzle/guzzle",
-            "version": "v2.8.1",
+            "name": "guzzlehttp/guzzle",
+            "version": "v2.8.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "v2.8.1"
+                "reference": "6738770a1d9e299cec6c2079220628ee8c739483"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/v2.8.1",
-                "reference": "v2.8.1",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/6738770a1d9e299cec6c2079220628ee8c739483",
+                "reference": "6738770a1d9e299cec6c2079220628ee8c739483",
                 "shasum": ""
             },
             "require": {
@@ -201,8 +201,7 @@
                 "rest",
                 "web service"
             ],
-            "abandoned": "guzzlehttp/guzzle",
-            "time": "2012-07-16T14:08:54+00:00"
+            "time": "2012-10-16T00:42:47+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -398,12 +397,12 @@
             ],
             "authors": [
                 {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
                     "name": "Symfony Community",
                     "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
                 }
             ],
             "description": "Symfony EventDispatcher Component",
