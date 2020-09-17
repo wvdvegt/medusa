@@ -30,7 +30,7 @@ class Downloader
 
         $cmd = 'git clone --mirror %s %s';
 
-        $process = new Process(sprintf($cmd, $this->url, $repo));
+        $process = Process::fromShellCommandline(sprintf($cmd, $this->url, $repo));
         $process->setTimeout(3600);
         $process->run();
 
@@ -40,7 +40,7 @@ class Downloader
 
         $cmd = 'cd %s && git update-server-info -f';
 
-        $process = new Process(sprintf($cmd, $repo));
+        $process = Process::fromShellCommandline(sprintf($cmd, $repo));
         $process->setTimeout(3600);
         $process->run();
 
@@ -49,7 +49,7 @@ class Downloader
         }
 
         $cmd = 'cd %s && git fsck';
-        $process = new Process(sprintf($cmd, $repo));
+        $process = Process::fromShellCommandline(sprintf($cmd, $repo));
         $process->setTimeout(3600);
         $process->run();
 

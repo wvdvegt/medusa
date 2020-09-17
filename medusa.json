@@ -5,6 +5,6 @@
         "guzzle/guzzle"
     ],
     "repodir": "web/repositories",
-    "satisurl": "http://user:password@satis.host:port/repositories",
+    "satisurl": "http://localhost//repositories",
     "satisconfig": "satis.json"
 }

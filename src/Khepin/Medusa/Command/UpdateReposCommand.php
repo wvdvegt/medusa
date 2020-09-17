@@ -47,7 +47,7 @@ EOT
 
         foreach ($repos as $repo) {
             $output->writeln(' - Fetching latest changes in <info>'.$repo.'</info>');
-            $process = new Process(sprintf($fetchCmd, $repo));
+            $process = Process::fromShellCommandline(sprintf($fetchCmd, $repo));
             $process->setTimeout(300)
                     ->run();
 
@@ -57,7 +57,7 @@ EOT
 
             $output->writeln($process->getOutput());
 
-            $process = new Process(sprintf($updateCmd, $repo));
+            $process = Process::fromShellCommandline(sprintf($updateCmd, $repo));
             $process->setTimeout(600)
                     ->run();
 
@@ -67,5 +67,7 @@ EOT
 
             $output->writeln($process->getOutput());
         }
+
+        return 1;
     }
 }

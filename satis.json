@@ -1,0 +1,139 @@
+{
+    "name": "My Repository",
+    "homepage": "http://packages.example.org",
+    "repositories": [
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/twig/twig.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/guzzle/guzzle.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/symfony/validator.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/doctrine/common.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/doctrine/reflection.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/doctrine/event-manager.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/doctrine/annotations.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/doctrine/lexer.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/doctrine/collections.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/doctrine/cache.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/doctrine/inflector.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/doctrine/persistence.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/symfony/property-access.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/symfony/polyfill-php70.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/paragonie/random_compat.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/symfony/inflector.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/symfony/string.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/symfony/polyfill-intl-normalizer.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/symfony/polyfill-intl-grapheme.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/symfony/property-info.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/symfony/contracts.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/psr/event-dispatcher.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/psr/container.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/psr/cache.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/symfony/translation.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/symfony/deprecation-contracts.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/symfony/polyfill-php73.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/symfony/translation-contracts.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/symfony/polyfill-php80.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/symfony/polyfill-mbstring.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/symfony/polyfill-ctype.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/symfony/event-dispatcher.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost//repositories/symfony/event-dispatcher-contracts.git"
+        }
+    ],
+    "require-all": true
+}
