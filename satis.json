@@ -1,138 +1,147 @@
 {
-    "name": "My Repository",
-    "homepage": "http://packages.example.org",
+    "name": "my/packagist",
+    "homepage": "http://localhost/satis/mirrors",
     "repositories": [
         {
             "type": "git",
-            "url": "http://localhost//repositories/twig/twig.git"
+            "url": "http://localhost/medusa/web/repositories/twig/twig.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/guzzle/guzzle.git"
+            "url": "http://localhost/medusa/web/repositories/guzzle/guzzle.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/symfony/validator.git"
+            "url": "http://localhost/medusa/web/repositories/symfony/validator.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/doctrine/common.git"
+            "url": "http://localhost/medusa/web/repositories/doctrine/common.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/doctrine/reflection.git"
+            "url": "http://localhost/medusa/web/repositories/doctrine/reflection.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/doctrine/event-manager.git"
+            "url": "http://localhost/medusa/web/repositories/doctrine/event-manager.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/doctrine/annotations.git"
+            "url": "http://localhost/medusa/web/repositories/doctrine/annotations.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/doctrine/lexer.git"
+            "url": "http://localhost/medusa/web/repositories/doctrine/lexer.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/doctrine/collections.git"
+            "url": "http://localhost/medusa/web/repositories/doctrine/collections.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/doctrine/cache.git"
+            "url": "http://localhost/medusa/web/repositories/doctrine/cache.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/doctrine/inflector.git"
+            "url": "http://localhost/medusa/web/repositories/doctrine/inflector.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/doctrine/persistence.git"
+            "url": "http://localhost/medusa/web/repositories/doctrine/persistence.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/symfony/property-access.git"
+            "url": "http://localhost/medusa/web/repositories/symfony/property-access.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/symfony/polyfill-php70.git"
+            "url": "http://localhost/medusa/web/repositories/symfony/polyfill-php70.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/paragonie/random_compat.git"
+            "url": "http://localhost/medusa/web/repositories/paragonie/random_compat.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/symfony/inflector.git"
+            "url": "http://localhost/medusa/web/repositories/symfony/inflector.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/symfony/string.git"
+            "url": "http://localhost/medusa/web/repositories/symfony/string.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/symfony/polyfill-intl-normalizer.git"
+            "url": "http://localhost/medusa/web/repositories/symfony/polyfill-intl-normalizer.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/symfony/polyfill-intl-grapheme.git"
+            "url": "http://localhost/medusa/web/repositories/symfony/polyfill-intl-grapheme.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/symfony/property-info.git"
+            "url": "http://localhost/medusa/web/repositories/symfony/property-info.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/symfony/contracts.git"
+            "url": "http://localhost/medusa/web/repositories/symfony/contracts.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/psr/event-dispatcher.git"
+            "url": "http://localhost/medusa/web/repositories/psr/event-dispatcher.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/psr/container.git"
+            "url": "http://localhost/medusa/web/repositories/psr/container.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/psr/cache.git"
+            "url": "http://localhost/medusa/web/repositories/psr/cache.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/symfony/translation.git"
+            "url": "http://localhost/medusa/web/repositories/symfony/translation.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/symfony/deprecation-contracts.git"
+            "url": "http://localhost/medusa/web/repositories/symfony/deprecation-contracts.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/symfony/polyfill-php73.git"
+            "url": "http://localhost/medusa/web/repositories/symfony/polyfill-php73.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/symfony/translation-contracts.git"
+            "url": "http://localhost/medusa/web/repositories/symfony/translation-contracts.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/symfony/polyfill-php80.git"
+            "url": "http://localhost/medusa/web/repositories/symfony/polyfill-php80.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/symfony/polyfill-mbstring.git"
+            "url": "http://localhost/medusa/web/repositories/symfony/polyfill-mbstring.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/symfony/polyfill-ctype.git"
+            "url": "http://localhost/medusa/web/repositories/symfony/polyfill-ctype.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/symfony/event-dispatcher.git"
+            "url": "http://localhost/medusa/web/repositories/symfony/event-dispatcher.git"
         },
         {
             "type": "git",
-            "url": "http://localhost//repositories/symfony/event-dispatcher-contracts.git"
+            "url": "http://localhost/medusa/web/repositories/symfony/event-dispatcher-contracts.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost/medusa/web/repositories/psr/http-message.git"
+        },
+        {
+            "type": "git",
+            "url": "http://localhost/medusa/web/repositories/monolog/monolog.git",
+            "name": "monolog/monolog"
         }
     ],
     "require-all": true

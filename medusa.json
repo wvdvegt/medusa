@@ -5,6 +5,6 @@
         "guzzle/guzzle"
     ],
     "repodir": "web/repositories",
-    "satisurl": "http://localhost//repositories",
+    "satisurl": "http://localhost/medusa/web/repositories",
     "satisconfig": "satis.json"
 }

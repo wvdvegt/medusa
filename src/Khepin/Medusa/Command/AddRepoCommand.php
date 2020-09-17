@@ -106,13 +106,15 @@ class AddRepoCommand extends Command
                 $url = $package.'.git';
                 $repo = array(
                     'type' => 'git',
-                    'url' => $satisUrl . '/' . $url
+                    'url' => $satisUrl . '/' . $url,
+                    'name' => $package
                 );
             } else {
                 $url = ltrim(realpath($this->config->repodir.'/'.$package.'.git'), '/');
                 $repo = array(
                     'type' => 'git',
-                    'url' => 'file:///' . $url
+                    'url' => 'file:///' . $url,
+                    'name' => $package
                 );
             }
 
